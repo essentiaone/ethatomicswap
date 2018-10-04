@@ -12,6 +12,7 @@ var Engine = function (configuration, appConfiguration) {
     this.clone = require("clone");
     this.common = null;
     this.web3 = null;
+    this.request = require('request')
 
     var Common = require("./common");
     var Web3 = require("web3");
@@ -65,17 +66,38 @@ var Engine = function (configuration, appConfiguration) {
                 //     console.log(log);
                 // });
 
-                contract._executeMethod.call(funcObj, 'send', generalParams, function (err, result) {
-                    if (err)
-                        reject(err);
-                    else
-                        resolve(result);
-                }).then(function(r) {
-                    console.log(r);
-                }).catch(function (err) {
-                    console.log(err);
-                    reject(err);
-                });
+                const options = {
+                  url: 'http://localhost:8545',
+                  method: 'POST',
+                  json: {
+                    'jsonrpc': '2.0',
+                    'method': 'eth_sendTransaction',
+                    'params': [{
+                      'from': generalParams.from,
+                      'to': that.appConfig.contractAddress,
+                      'value': '0x2386F26FC10000',
+                      'data': funcObj.encodeABI(),
+                      'gasPrice': '0x2E90EDD000'
+                    }],
+                    'id': 5678
+                  }
+                }
+
+                that.request(options, (err, req, body) => {
+                  resolve(body.result)
+                })
+
+                // contract._executeMethod.call(funcObj, 'send', generalParams, function (err, result) {
+                //     if (err)
+                //         reject(err);
+                //     else
+                //         resolve(result);
+                // }).then(function(r) {
+                //     console.log(r);
+                // }).catch(function (err) {
+                //     console.log(err);
+                //     reject(err);
+                // });
             } catch (e) {
                 reject(e);
             }

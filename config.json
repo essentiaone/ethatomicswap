@@ -2,13 +2,13 @@
   "hosts" : [
     {
       "wshost": "ws://127.0.0.1:8546",
-      "contractAddress": "0xccc436e06dfda84f7d9f14e95d84ff8d57f84a33",
-      "defaultWallet": "0xd4e0102f8444f243411c8132ea42afdcbf470a2f"
+      "contractAddress": "0xff191c3396508355ffdac855a7b81e1bc126337a",
+      "defaultWallet": "0x0344bd1e9faa978ce0f1fe12301035cfb5883fd7"
     },
     {
       "wshost": "ws://127.0.0.1:8546",
-      "contractAddress": "0xccc436e06dfda84f7d9f14e95d84ff8d57f84a33",
-      "defaultWallet": "0xd4e0102f8444f243411c8132ea42afdcbf470a2f"
+      "contractAddress": "0xff191c3396508355ffdac855a7b81e1bc126337a",
+      "defaultWallet": "0x0344bd1e9faa978ce0f1fe12301035cfb5883fd7"
     }
   ]
 }
